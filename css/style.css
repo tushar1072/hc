@@ -384,7 +384,7 @@ a, button { cursor: none; }
   align-items: center;
   gap: 0.5rem;
   opacity: 0;
-  animation: fadeUp 1s 1.2s forwards;
+  animation: fadeUpCentered 1s 1.2s forwards;
 }
 .hero-scroll-text {
   font-size: 0.58rem;
@@ -1464,6 +1464,10 @@ footer {
 @keyframes countUp {
   from { opacity: 0; }
   to { opacity: 1; }
+}
+@keyframes fadeUpCentered {
+  from { opacity: 0; transform: translate(-50%, 30px); }
+  to { opacity: 1; transform: translate(-50%, 0); }
 }
 
 /* Reveal on scroll */
