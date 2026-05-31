@@ -250,6 +250,16 @@ a, button { cursor: none; }
   transition: var(--transition);
   display: block;
 }
+.hamburger.open span:nth-child(1) {
+  transform: translateY(6.5px) rotate(45deg);
+}
+.hamburger.open span:nth-child(2) {
+  opacity: 0;
+  transform: translateX(-10px);
+}
+.hamburger.open span:nth-child(3) {
+  transform: translateY(-6.5px) rotate(-45deg);
+}
 
 /* ═══════════════════════════════════════════
    HERO

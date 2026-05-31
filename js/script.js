@@ -42,11 +42,15 @@ window.addEventListener('scroll', () => {
 // ════════ MOBILE NAV ════════
 function toggleMobileNav() {
   const mobileNav = document.getElementById('mobileNav');
+  const hamburger = document.getElementById('hamburger');
   if (mobileNav) mobileNav.classList.toggle('open');
+  if (hamburger) hamburger.classList.toggle('open');
 }
 function closeMobileNav() {
   const mobileNav = document.getElementById('mobileNav');
+  const hamburger = document.getElementById('hamburger');
   if (mobileNav) mobileNav.classList.remove('open');
+  if (hamburger) hamburger.classList.remove('open');
 }
 
 // ════════ SCROLL REVEAL ════════
