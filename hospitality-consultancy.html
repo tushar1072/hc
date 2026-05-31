@@ -1,0 +1,2352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Élite Hospitality Consultants | Transform Your Hospitality Business</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════
+   TOKENS & RESET
+═══════════════════════════════════════════ */
+:root {
+  --gold: #C8A96E;
+  --gold-light: #E4C99A;
+  --gold-dark: #9A7A42;
+  --black: #0A0804;
+  --dark: #12100A;
+  --dark2: #1C1810;
+  --dark3: #2A2416;
+  --warm-white: #F8F3EC;
+  --cream: #EDE5D8;
+  --text-muted: #9A8E7A;
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-body: 'Montserrat', sans-serif;
+  --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--black);
+  color: var(--warm-white);
+  overflow-x: hidden;
+  cursor: none;
+}
+
+/* Custom cursor */
+.cursor {
+  width: 12px; height: 12px;
+  background: var(--gold);
+  border-radius: 50%;
+  position: fixed;
+  top: 0; left: 0;
+  pointer-events: none;
+  z-index: 99999;
+  transform: translate(-50%, -50%);
+  transition: transform 0.1s, width 0.3s, height 0.3s, background 0.3s;
+  mix-blend-mode: normal;
+}
+.cursor-ring {
+  width: 36px; height: 36px;
+  border: 1.5px solid var(--gold);
+  border-radius: 50%;
+  position: fixed;
+  top: 0; left: 0;
+  pointer-events: none;
+  z-index: 99998;
+  transform: translate(-50%, -50%);
+  transition: transform 0.18s ease, width 0.3s, height 0.3s;
+  opacity: 0.7;
+}
+body:hover .cursor { opacity: 1; }
+
+a, button { cursor: none; }
+
+/* ═══════════════════════════════════════════
+   SCROLLBAR
+═══════════════════════════════════════════ */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--dark); }
+::-webkit-scrollbar-thumb { background: var(--gold-dark); border-radius: 2px; }
+
+/* ═══════════════════════════════════════════
+   UTILITY
+═══════════════════════════════════════════ */
+.container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+.section-label {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  color: var(--gold);
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.section-label::before {
+  content: '';
+  display: inline-block;
+  width: 40px;
+  height: 1px;
+  background: var(--gold);
+}
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  font-weight: 300;
+  line-height: 1.1;
+  color: var(--warm-white);
+  margin-top: 0.8rem;
+}
+.section-title em {
+  font-style: italic;
+  color: var(--gold);
+}
+.gold-line {
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--gold), transparent);
+  margin: 1.5rem 0;
+}
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 1rem 2.2rem;
+  background: var(--gold);
+  color: var(--black);
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: none;
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--black);
+  transform: translateX(-101%);
+  transition: var(--transition);
+  z-index: 0;
+}
+.btn-primary:hover::before { transform: translateX(0); }
+.btn-primary:hover { color: var(--gold); }
+.btn-primary span { position: relative; z-index: 1; }
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 1rem 2.2rem;
+  border: 1px solid rgba(200,169,110,0.5);
+  color: var(--gold);
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: var(--transition);
+  background: transparent;
+}
+.btn-outline:hover {
+  background: rgba(200,169,110,0.08);
+  border-color: var(--gold);
+}
+
+/* ═══════════════════════════════════════════
+   NAVBAR
+═══════════════════════════════════════════ */
+.navbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  padding: 1.4rem 0;
+  transition: var(--transition);
+}
+.navbar.scrolled {
+  background: rgba(10,8,4,0.95);
+  backdrop-filter: blur(20px);
+  padding: 1rem 0;
+  border-bottom: 1px solid rgba(200,169,110,0.12);
+}
+.navbar .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav-logo {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+}
+.nav-logo-text {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: var(--warm-white);
+  letter-spacing: 0.05em;
+  line-height: 1;
+}
+.nav-logo-sub {
+  font-size: 0.58rem;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-top: 0.2rem;
+}
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+  list-style: none;
+}
+.nav-links a {
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(248,243,236,0.7);
+  text-decoration: none;
+  transition: color 0.3s;
+  position: relative;
+}
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px; left: 0;
+  width: 0; height: 1px;
+  background: var(--gold);
+  transition: width 0.3s;
+}
+.nav-links a:hover { color: var(--gold); }
+.nav-links a:hover::after { width: 100%; }
+.nav-cta {
+  padding: 0.65rem 1.4rem;
+  background: var(--gold);
+  color: var(--black) !important;
+  font-weight: 700 !important;
+}
+.nav-cta:hover { background: var(--gold-dark); color: var(--warm-white) !important; }
+.nav-cta::after { display: none; }
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  padding: 4px;
+}
+.hamburger span {
+  width: 24px;
+  height: 1.5px;
+  background: var(--gold);
+  transition: var(--transition);
+  display: block;
+}
+
+/* ═══════════════════════════════════════════
+   HERO
+═══════════════════════════════════════════ */
+#hero {
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(135deg, rgba(10,8,4,0.92) 0%, rgba(10,8,4,0.6) 50%, rgba(10,8,4,0.85) 100%),
+    url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1600&q=80') center/cover no-repeat;
+  z-index: 0;
+}
+.hero-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 70% 50%, rgba(200,169,110,0.08) 0%, transparent 70%);
+}
+.hero-grain {
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  opacity: 0.5;
+  z-index: 1;
+  pointer-events: none;
+}
+.hero-content {
+  position: relative;
+  z-index: 2;
+  padding: 9rem 0 6rem;
+  max-width: 820px;
+}
+.hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  opacity: 0;
+  animation: fadeUp 1s 0.2s forwards;
+}
+.hero-eyebrow-line {
+  width: 50px; height: 1px;
+  background: var(--gold);
+}
+.hero-eyebrow-text {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.35em;
+  color: var(--gold);
+  text-transform: uppercase;
+}
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 7vw, 5.5rem);
+  font-weight: 300;
+  line-height: 1.05;
+  color: var(--warm-white);
+  opacity: 0;
+  animation: fadeUp 1s 0.4s forwards;
+}
+.hero-title em {
+  font-style: italic;
+  color: var(--gold);
+}
+.hero-title strong {
+  font-weight: 600;
+  display: block;
+}
+.hero-sub {
+  font-size: 0.92rem;
+  font-weight: 300;
+  line-height: 1.8;
+  color: rgba(248,243,236,0.65);
+  max-width: 500px;
+  margin: 2rem 0 2.8rem;
+  opacity: 0;
+  animation: fadeUp 1s 0.6s forwards;
+}
+.hero-btns {
+  display: flex;
+  gap: 1.2rem;
+  flex-wrap: wrap;
+  opacity: 0;
+  animation: fadeUp 1s 0.8s forwards;
+}
+.whatsapp-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 1rem 2rem;
+  background: rgba(37,211,102,0.12);
+  border: 1px solid rgba(37,211,102,0.35);
+  color: #25D366;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: var(--transition);
+}
+.whatsapp-btn:hover {
+  background: rgba(37,211,102,0.2);
+  border-color: #25D366;
+}
+.whatsapp-icon { width: 18px; height: 18px; fill: #25D366; }
+
+.hero-scroll {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  opacity: 0;
+  animation: fadeUp 1s 1.2s forwards;
+}
+.hero-scroll-text {
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+.scroll-line {
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(180deg, var(--gold), transparent);
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+
+/* Hero stats bar */
+.hero-stats {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: 2;
+  display: flex;
+  justify-content: flex-end;
+}
+.hero-stats-inner {
+  display: flex;
+  background: rgba(28,24,16,0.85);
+  backdrop-filter: blur(20px);
+  border-top: 1px solid rgba(200,169,110,0.15);
+  border-left: 1px solid rgba(200,169,110,0.15);
+}
+.hero-stat {
+  padding: 1.4rem 2.4rem;
+  border-right: 1px solid rgba(200,169,110,0.12);
+  text-align: center;
+}
+.hero-stat:last-child { border-right: none; }
+.hero-stat-num {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: var(--gold);
+  line-height: 1;
+}
+.hero-stat-label {
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  margin-top: 0.3rem;
+}
+
+/* ═══════════════════════════════════════════
+   TICKER STRIP
+═══════════════════════════════════════════ */
+.ticker {
+  background: var(--gold);
+  padding: 0.8rem 0;
+  overflow: hidden;
+  position: relative;
+}
+.ticker-track {
+  display: flex;
+  gap: 0;
+  animation: ticker 30s linear infinite;
+  width: max-content;
+}
+.ticker-item {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 0 2rem;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--black);
+  white-space: nowrap;
+}
+.ticker-dot {
+  width: 4px; height: 4px;
+  background: var(--black);
+  border-radius: 50%;
+  opacity: 0.4;
+}
+
+/* ═══════════════════════════════════════════
+   ABOUT
+═══════════════════════════════════════════ */
+#about {
+  padding: 8rem 0;
+  background: var(--dark);
+  position: relative;
+}
+#about::before {
+  content: 'ABOUT';
+  position: absolute;
+  top: 3rem;
+  right: -2rem;
+  font-family: var(--font-display);
+  font-size: 10rem;
+  font-weight: 700;
+  color: rgba(200,169,110,0.03);
+  letter-spacing: -0.05em;
+  pointer-events: none;
+  user-select: none;
+}
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6rem;
+  align-items: center;
+}
+.about-img-wrap {
+  position: relative;
+}
+.about-img {
+  width: 100%;
+  aspect-ratio: 4/5;
+  object-fit: cover;
+  display: block;
+}
+.about-img-frame {
+  position: absolute;
+  top: -1.5rem;
+  left: -1.5rem;
+  right: 1.5rem;
+  bottom: 1.5rem;
+  border: 1px solid rgba(200,169,110,0.25);
+  pointer-events: none;
+}
+.about-badge {
+  position: absolute;
+  bottom: -2rem;
+  right: -2rem;
+  width: 120px;
+  height: 120px;
+  background: var(--gold);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.about-badge-num {
+  font-family: var(--font-display);
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--black);
+  line-height: 1;
+}
+.about-badge-text {
+  font-size: 0.55rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: rgba(10,8,4,0.7);
+  text-transform: uppercase;
+  margin-top: 0.3rem;
+}
+.about-body p {
+  font-size: 0.9rem;
+  font-weight: 300;
+  line-height: 1.9;
+  color: rgba(248,243,236,0.65);
+  margin-bottom: 1.2rem;
+}
+.about-features {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin: 2rem 0;
+}
+.about-feature {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.8rem;
+}
+.about-feature-icon {
+  width: 20px;
+  height: 20px;
+  color: var(--gold);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.about-feature-text {
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--warm-white);
+  line-height: 1.4;
+}
+
+/* ═══════════════════════════════════════════
+   SERVICES
+═══════════════════════════════════════════ */
+#services {
+  padding: 8rem 0;
+  background: var(--dark2);
+  position: relative;
+}
+.services-header {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto 5rem;
+}
+.services-header .section-label { justify-content: center; }
+.services-header .section-label::before { display: none; }
+.services-header .gold-line { margin: 1.5rem auto; }
+.services-header p {
+  font-size: 0.9rem;
+  font-weight: 300;
+  line-height: 1.8;
+  color: var(--text-muted);
+}
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5px;
+  background: rgba(200,169,110,0.08);
+}
+.service-card {
+  background: var(--dark2);
+  padding: 2.8rem 2.2rem;
+  position: relative;
+  overflow: hidden;
+  transition: var(--transition);
+  group: '';
+}
+.service-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(200,169,110,0.06) 0%, transparent 60%);
+  opacity: 0;
+  transition: var(--transition);
+}
+.service-card:hover { background: var(--dark3); }
+.service-card:hover::before { opacity: 1; }
+.service-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 0; height: 2px;
+  background: var(--gold);
+  transition: width 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.service-card:hover::after { width: 100%; }
+.service-num {
+  font-family: var(--font-display);
+  font-size: 3rem;
+  font-weight: 700;
+  color: rgba(200,169,110,0.1);
+  line-height: 1;
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  transition: var(--transition);
+}
+.service-card:hover .service-num { color: rgba(200,169,110,0.2); }
+.service-icon-wrap {
+  width: 52px;
+  height: 52px;
+  border: 1px solid rgba(200,169,110,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.8rem;
+  transition: var(--transition);
+}
+.service-card:hover .service-icon-wrap {
+  border-color: var(--gold);
+  background: rgba(200,169,110,0.08);
+}
+.service-icon {
+  font-size: 1.4rem;
+}
+.service-title {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: var(--warm-white);
+  margin-bottom: 0.8rem;
+  transition: var(--transition);
+}
+.service-card:hover .service-title { color: var(--gold); }
+.service-desc {
+  font-size: 0.8rem;
+  font-weight: 300;
+  line-height: 1.7;
+  color: var(--text-muted);
+}
+.service-arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gold);
+  text-decoration: none;
+  margin-top: 1.5rem;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: var(--transition);
+}
+.service-card:hover .service-arrow {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ═══════════════════════════════════════════
+   WHY CHOOSE US
+═══════════════════════════════════════════ */
+#why {
+  padding: 8rem 0;
+  background: var(--dark);
+  position: relative;
+  overflow: hidden;
+}
+.why-bg-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--font-display);
+  font-size: 18vw;
+  font-weight: 700;
+  color: rgba(200,169,110,0.025);
+  white-space: nowrap;
+  pointer-events: none;
+  user-select: none;
+}
+.why-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: center;
+}
+.why-features {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+.why-feature {
+  padding: 2rem;
+  border: 1px solid rgba(200,169,110,0.1);
+  position: relative;
+  overflow: hidden;
+  transition: var(--transition);
+}
+.why-feature::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 3px; height: 0;
+  background: var(--gold);
+  transition: height 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.why-feature:hover { border-color: rgba(200,169,110,0.3); }
+.why-feature:hover::before { height: 100%; }
+.why-feature-icon {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  display: block;
+}
+.why-feature-title {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--warm-white);
+  margin-bottom: 0.5rem;
+}
+.why-feature-desc {
+  font-size: 0.78rem;
+  font-weight: 300;
+  line-height: 1.7;
+  color: var(--text-muted);
+}
+.why-image-wrap {
+  position: relative;
+}
+.why-image {
+  width: 100%;
+  aspect-ratio: 4/5;
+  object-fit: cover;
+}
+.why-quote {
+  position: absolute;
+  bottom: -2rem;
+  left: -2rem;
+  right: 2rem;
+  background: var(--gold);
+  padding: 2rem 2rem;
+}
+.why-quote-text {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-style: italic;
+  font-weight: 500;
+  color: var(--black);
+  line-height: 1.5;
+}
+.why-quote-author {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(10,8,4,0.6);
+  margin-top: 0.8rem;
+}
+
+/* ═══════════════════════════════════════════
+   STATS
+═══════════════════════════════════════════ */
+#stats {
+  padding: 6rem 0;
+  background: var(--gold);
+  position: relative;
+  overflow: hidden;
+}
+#stats::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0;
+  position: relative;
+}
+.stat-item {
+  padding: 2rem;
+  text-align: center;
+  border-right: 1px solid rgba(10,8,4,0.1);
+  position: relative;
+}
+.stat-item:last-child { border-right: none; }
+.stat-num {
+  font-family: var(--font-display);
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: var(--black);
+  line-height: 1;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 0.2rem;
+}
+.stat-suffix {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: rgba(10,8,4,0.6);
+  margin-top: 0.5rem;
+}
+.stat-label {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(10,8,4,0.6);
+  margin-top: 0.6rem;
+}
+
+/* ═══════════════════════════════════════════
+   PORTFOLIO
+═══════════════════════════════════════════ */
+#portfolio {
+  padding: 8rem 0;
+  background: var(--dark2);
+}
+.portfolio-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 3.5rem;
+}
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: auto auto;
+  gap: 1.5px;
+  background: rgba(200,169,110,0.05);
+}
+.portfolio-item {
+  position: relative;
+  overflow: hidden;
+  background: var(--dark2);
+}
+.portfolio-item:nth-child(1) { grid-column: span 7; grid-row: span 2; }
+.portfolio-item:nth-child(2) { grid-column: span 5; }
+.portfolio-item:nth-child(3) { grid-column: span 5; }
+.portfolio-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  aspect-ratio: 16/9;
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  min-height: 200px;
+}
+.portfolio-item:nth-child(1) img { min-height: 500px; }
+.portfolio-item:hover img { transform: scale(1.06); }
+.portfolio-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(10,8,4,0.9) 0%, rgba(10,8,4,0.1) 60%, transparent 100%);
+  display: flex;
+  align-items: flex-end;
+  padding: 2rem;
+  transform: translateY(60px);
+  opacity: 0;
+  transition: var(--transition);
+}
+.portfolio-item:hover .portfolio-overlay { opacity: 1; transform: translateY(0); }
+.portfolio-info {}
+.portfolio-tag {
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.portfolio-name {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: var(--warm-white);
+  margin-top: 0.3rem;
+}
+
+/* ═══════════════════════════════════════════
+   TESTIMONIALS
+═══════════════════════════════════════════ */
+#testimonials {
+  padding: 8rem 0;
+  background: var(--dark);
+  position: relative;
+  overflow: hidden;
+}
+.testimonials-header {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto 5rem;
+}
+.testimonials-header .section-label { justify-content: center; }
+.testimonials-header .section-label::before { display: none; }
+.testimonials-header .gold-line { margin: 1.5rem auto; }
+.testimonials-slider {
+  position: relative;
+}
+.testimonials-track {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+.testimonial-card {
+  background: var(--dark2);
+  border: 1px solid rgba(200,169,110,0.08);
+  padding: 2.5rem;
+  position: relative;
+  transition: var(--transition);
+}
+.testimonial-card:hover {
+  border-color: rgba(200,169,110,0.2);
+  background: var(--dark3);
+}
+.testimonial-quote-icon {
+  font-family: var(--font-display);
+  font-size: 5rem;
+  font-weight: 700;
+  color: rgba(200,169,110,0.15);
+  line-height: 0.8;
+  position: absolute;
+  top: 1.5rem;
+  right: 2rem;
+}
+.testimonial-stars {
+  display: flex;
+  gap: 3px;
+  margin-bottom: 1.2rem;
+}
+.star { color: var(--gold); font-size: 0.8rem; }
+.testimonial-text {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.7;
+  color: rgba(248,243,236,0.8);
+  margin-bottom: 2rem;
+}
+.testimonial-author {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.author-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgba(200,169,110,0.3);
+}
+.author-info {}
+.author-name {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--warm-white);
+  letter-spacing: 0.05em;
+}
+.author-role {
+  font-size: 0.68rem;
+  font-weight: 500;
+  color: var(--gold);
+  margin-top: 0.15rem;
+}
+
+/* ═══════════════════════════════════════════
+   FOUNDER
+═══════════════════════════════════════════ */
+#founder {
+  padding: 8rem 0;
+  background: var(--dark2);
+}
+.founder-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 6rem;
+  align-items: center;
+}
+.founder-img-wrap {
+  position: relative;
+}
+.founder-img {
+  width: 100%;
+  aspect-ratio: 3/4;
+  object-fit: cover;
+  object-position: top;
+}
+.founder-accent {
+  position: absolute;
+  top: 2rem;
+  left: -2rem;
+  right: 2rem;
+  bottom: -2rem;
+  border: 1px solid rgba(200,169,110,0.2);
+  z-index: 0;
+  pointer-events: none;
+}
+.founder-img-wrap img { position: relative; z-index: 1; }
+.founder-credentials {
+  position: absolute;
+  bottom: 2rem;
+  right: -2rem;
+  z-index: 2;
+  background: var(--dark);
+  border: 1px solid rgba(200,169,110,0.2);
+  padding: 1.5rem 2rem;
+  min-width: 200px;
+}
+.credential-item {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid rgba(200,169,110,0.08);
+}
+.credential-item:last-child { border-bottom: none; }
+.credential-dot {
+  width: 6px; height: 6px;
+  background: var(--gold);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.credential-text {
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: rgba(248,243,236,0.7);
+}
+.founder-body {}
+.founder-body p {
+  font-size: 0.9rem;
+  font-weight: 300;
+  line-height: 1.9;
+  color: rgba(248,243,236,0.65);
+  margin-bottom: 1.2rem;
+}
+.founder-name {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--warm-white);
+  margin: 1.5rem 0 0.3rem;
+}
+.founder-title-tag {
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  color: var(--gold);
+  text-transform: uppercase;
+}
+.founder-divider {
+  width: 40px;
+  height: 2px;
+  background: var(--gold);
+  margin: 1.5rem 0;
+}
+
+/* ═══════════════════════════════════════════
+   CONTACT
+═══════════════════════════════════════════ */
+#contact {
+  padding: 8rem 0;
+  background: var(--black);
+  position: relative;
+}
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 6rem;
+}
+.contact-info {}
+.contact-info p {
+  font-size: 0.9rem;
+  font-weight: 300;
+  line-height: 1.9;
+  color: rgba(248,243,236,0.55);
+  margin: 1.5rem 0 2.5rem;
+}
+.contact-items {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.contact-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.2rem;
+}
+.contact-item-icon {
+  width: 44px;
+  height: 44px;
+  border: 1px solid rgba(200,169,110,0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 1rem;
+  color: var(--gold);
+  transition: var(--transition);
+}
+.contact-item:hover .contact-item-icon {
+  background: rgba(200,169,110,0.1);
+  border-color: var(--gold);
+}
+.contact-item-text {}
+.contact-item-label {
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.3rem;
+}
+.contact-item-value {
+  font-size: 0.88rem;
+  font-weight: 400;
+  color: var(--warm-white);
+}
+.contact-form {}
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.2rem;
+  margin-bottom: 1.2rem;
+}
+.form-group { display: flex; flex-direction: column; gap: 0.5rem; }
+.form-group label {
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.form-group input,
+.form-group select,
+.form-group textarea {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(200,169,110,0.15);
+  padding: 0.9rem 1.2rem;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 300;
+  color: var(--warm-white);
+  outline: none;
+  transition: border-color 0.3s;
+  -webkit-appearance: none;
+}
+.form-group select option { background: var(--dark2); }
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--gold);
+  background: rgba(200,169,110,0.03);
+}
+.form-group textarea { resize: vertical; min-height: 120px; }
+.form-full { margin-bottom: 1.2rem; }
+.form-submit {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 0.8rem;
+}
+.form-note {
+  font-size: 0.72rem;
+  font-weight: 300;
+  color: var(--text-muted);
+}
+
+/* Map placeholder */
+.map-wrap {
+  margin-top: 5rem;
+  height: 300px;
+  background: var(--dark2);
+  border: 1px solid rgba(200,169,110,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+.map-overlay {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem;
+  z-index: 1;
+}
+.map-icon { font-size: 2rem; color: var(--gold); }
+.map-text {
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+.map-btn {
+  padding: 0.6rem 1.5rem;
+  border: 1px solid rgba(200,169,110,0.3);
+  color: var(--gold);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: var(--transition);
+}
+.map-btn:hover { background: rgba(200,169,110,0.1); }
+
+/* ═══════════════════════════════════════════
+   FOOTER
+═══════════════════════════════════════════ */
+footer {
+  background: var(--dark2);
+  border-top: 1px solid rgba(200,169,110,0.1);
+}
+.footer-main {
+  padding: 5rem 0 4rem;
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr;
+  gap: 4rem;
+}
+.footer-brand-desc {
+  font-size: 0.82rem;
+  font-weight: 300;
+  line-height: 1.8;
+  color: var(--text-muted);
+  margin: 1.2rem 0 2rem;
+}
+.footer-social {
+  display: flex;
+  gap: 0.8rem;
+}
+.social-btn {
+  width: 36px; height: 36px;
+  border: 1px solid rgba(200,169,110,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  text-decoration: none;
+  transition: var(--transition);
+}
+.social-btn:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+  background: rgba(200,169,110,0.08);
+}
+.footer-col-title {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1.5rem;
+}
+.footer-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+.footer-links a {
+  font-size: 0.8rem;
+  font-weight: 300;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.footer-links a::before {
+  content: '→';
+  font-size: 0.65rem;
+  color: var(--gold-dark);
+  transition: var(--transition);
+}
+.footer-links a:hover { color: var(--warm-white); }
+.footer-links a:hover::before { color: var(--gold); transform: translateX(3px); }
+.footer-bottom {
+  border-top: 1px solid rgba(200,169,110,0.08);
+  padding: 1.5rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.footer-copy {
+  font-size: 0.72rem;
+  font-weight: 300;
+  color: var(--text-muted);
+}
+.footer-bottom-links {
+  display: flex;
+  gap: 2rem;
+}
+.footer-bottom-links a {
+  font-size: 0.68rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  text-decoration: none;
+  letter-spacing: 0.08em;
+  transition: color 0.3s;
+}
+.footer-bottom-links a:hover { color: var(--gold); }
+
+/* ═══════════════════════════════════════════
+   FLOATING WHATSAPP
+═══════════════════════════════════════════ */
+.float-wa {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 999;
+  width: 54px;
+  height: 54px;
+  background: #25D366;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(37,211,102,0.35);
+  text-decoration: none;
+  transition: var(--transition);
+  animation: float 3s ease-in-out infinite;
+}
+.float-wa:hover { transform: scale(1.1); box-shadow: 0 6px 28px rgba(37,211,102,0.5); }
+.float-wa svg { width: 26px; height: 26px; fill: white; }
+
+/* ═══════════════════════════════════════════
+   BLOG SECTION
+═══════════════════════════════════════════ */
+#blog {
+  padding: 8rem 0;
+  background: var(--dark);
+}
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-top: 4rem;
+}
+.blog-card {
+  background: var(--dark2);
+  overflow: hidden;
+  transition: var(--transition);
+}
+.blog-card:hover { transform: translateY(-4px); }
+.blog-thumb {
+  width: 100%;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  display: block;
+}
+.blog-card:hover .blog-thumb { transform: scale(1.05); }
+.blog-thumb-wrap { overflow: hidden; }
+.blog-content { padding: 1.8rem; }
+.blog-tag {
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.blog-title {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 500;
+  color: var(--warm-white);
+  line-height: 1.4;
+  margin: 0.7rem 0 0.8rem;
+  transition: color 0.3s;
+}
+.blog-card:hover .blog-title { color: var(--gold); }
+.blog-excerpt {
+  font-size: 0.78rem;
+  font-weight: 300;
+  line-height: 1.7;
+  color: var(--text-muted);
+}
+.blog-meta {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  padding-top: 1.2rem;
+  border-top: 1px solid rgba(200,169,110,0.08);
+}
+.blog-date {
+  font-size: 0.65rem;
+  font-weight: 500;
+  color: var(--text-muted);
+}
+.blog-read-more {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gold);
+  text-decoration: none;
+  margin-left: auto;
+}
+
+/* ═══════════════════════════════════════════
+   ANIMATIONS
+═══════════════════════════════════════════ */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes ticker {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+@keyframes scrollPulse {
+  0%, 100% { opacity: 1; transform: scaleY(1); }
+  50% { opacity: 0.4; transform: scaleY(0.7); }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+@keyframes countUp {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Reveal on scroll */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+
+/* ═══════════════════════════════════════════
+   MOBILE NAV
+═══════════════════════════════════════════ */
+.mobile-nav {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(10,8,4,0.98);
+  z-index: 998;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+.mobile-nav.open { display: flex; }
+.mobile-nav a {
+  font-family: var(--font-display);
+  font-size: 2.2rem;
+  font-weight: 400;
+  color: var(--warm-white);
+  text-decoration: none;
+  letter-spacing: 0.05em;
+  transition: color 0.3s;
+}
+.mobile-nav a:hover { color: var(--gold); }
+
+/* ═══════════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════════ */
+@media (max-width: 1024px) {
+  .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+  .about-img-wrap { max-width: 500px; }
+  .why-grid { grid-template-columns: 1fr; gap: 3rem; }
+  .founder-grid { grid-template-columns: 1fr; gap: 3rem; }
+  .founder-img-wrap { max-width: 450px; }
+  .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 3rem; }
+  .stats-grid { grid-template-columns: repeat(3, 1fr); }
+  .stat-item:nth-child(4) { border-right: 0; }
+}
+
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+  .hero-stats-inner { flex-wrap: wrap; }
+  .hero-stat { border-bottom: 1px solid rgba(200,169,110,0.12); }
+  .services-grid { grid-template-columns: 1fr; }
+  .testimonials-track { grid-template-columns: 1fr; }
+  .portfolio-grid { grid-template-columns: 1fr; }
+  .portfolio-item:nth-child(1) { grid-column: span 1; grid-row: span 1; }
+  .portfolio-item:nth-child(2) { grid-column: span 1; }
+  .portfolio-item:nth-child(3) { grid-column: span 1; }
+  .blog-grid { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .form-row { grid-template-columns: 1fr; }
+  .stats-grid { grid-template-columns: 1fr 1fr; }
+  .why-features { grid-template-columns: 1fr; }
+  .portfolio-header { flex-direction: column; align-items: flex-start; gap: 1.5rem; }
+  body { cursor: auto; }
+  .cursor, .cursor-ring { display: none; }
+}
+
+@media (max-width: 480px) {
+  .hero-btns { flex-direction: column; }
+  .about-features { grid-template-columns: 1fr; }
+  .hero-stats-inner { display: none; }
+  .stats-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- Custom Cursor -->
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- Mobile Nav -->
+<div class="mobile-nav" id="mobileNav">
+  <a href="#about" onclick="closeMobileNav()">About</a>
+  <a href="#services" onclick="closeMobileNav()">Services</a>
+  <a href="#portfolio" onclick="closeMobileNav()">Portfolio</a>
+  <a href="#testimonials" onclick="closeMobileNav()">Testimonials</a>
+  <a href="#blog" onclick="closeMobileNav()">Blog</a>
+  <a href="#contact" onclick="closeMobileNav()">Contact</a>
+</div>
+
+<!-- ════════════════ NAVBAR ════════════════ -->
+<nav class="navbar" id="navbar">
+  <div class="container">
+    <a href="#" class="nav-logo">
+      <span class="nav-logo-text">Élite Hospitality</span>
+      <span class="nav-logo-sub">Consultants</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#portfolio">Portfolio</a></li>
+      <li><a href="#testimonials">Testimonials</a></li>
+      <li><a href="#blog">Blog</a></li>
+      <li><a href="#contact" class="nav-cta">Book Consultation</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" onclick="toggleMobileNav()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ════════════════ HERO ════════════════ -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grain"></div>
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-eyebrow">
+        <div class="hero-eyebrow-line"></div>
+        <span class="hero-eyebrow-text">Premier Hospitality Consulting</span>
+      </div>
+      <h1 class="hero-title">
+        <em>Transform</em> Your<br>
+        <strong>Hospitality Business</strong><br>
+        with Expert Insight
+      </h1>
+      <p class="hero-sub">
+        From concept to launch and beyond — we help you build, operate, and scale hotels, restaurants, cafés, and cloud kitchens with proven strategies and hands-on expertise.
+      </p>
+      <div class="hero-btns">
+        <a href="#contact" class="btn-primary">
+          <span>Book a Consultation</span>
+          <span>→</span>
+        </a>
+        <a href="https://wa.me/919876543210" class="whatsapp-btn" target="_blank" rel="noopener">
+          <svg class="whatsapp-icon" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+          WhatsApp Us
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="hero-stats-inner">
+      <div class="hero-stat">
+        <div class="hero-stat-num">15+</div>
+        <div class="hero-stat-label">Years Experience</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">200+</div>
+        <div class="hero-stat-label">Projects Completed</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">98%</div>
+        <div class="hero-stat-label">Client Satisfaction</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">18</div>
+        <div class="hero-stat-label">States Covered</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <span class="hero-scroll-text">Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- ════════════════ TICKER ════════════════ -->
+<div class="ticker">
+  <div class="ticker-track" id="tickerTrack">
+    <div class="ticker-item">Hotel Setup<div class="ticker-dot"></div></div>
+    <div class="ticker-item">Restaurant Launch<div class="ticker-dot"></div></div>
+    <div class="ticker-item">Café & Bakery<div class="ticker-dot"></div></div>
+    <div class="ticker-item">Cloud Kitchen<div class="ticker-dot"></div></div>
+    <div class="ticker-item">Menu Engineering<div class="ticker-dot"></div></div>
+    <div class="ticker-item">Kitchen Planning<div class="ticker-dot"></div></div>
+    <div class="ticker-item">Staff Training<div class="ticker-dot"></div></div>
+    <div class="ticker-item">Cost Optimization<div class="ticker-dot"></div></div>
+    <div class="ticker-item">Operational Audit<div class="ticker-dot"></div></div>
+    <div class="ticker-item">SOP Development<div class="ticker-dot"></div></div>
+    <!-- Duplicate for infinite scroll -->
+    <div class="ticker-item">Hotel Setup<div class="ticker-dot"></div></div>
+    <div class="ticker-item">Restaurant Launch<div class="ticker-dot"></div></div>
+    <div class="ticker-item">Café & Bakery<div class="ticker-dot"></div></div>
+    <div class="ticker-item">Cloud Kitchen<div class="ticker-dot"></div></div>
+    <div class="ticker-item">Menu Engineering<div class="ticker-dot"></div></div>
+    <div class="ticker-item">Kitchen Planning<div class="ticker-dot"></div></div>
+    <div class="ticker-item">Staff Training<div class="ticker-dot"></div></div>
+    <div class="ticker-item">Cost Optimization<div class="ticker-dot"></div></div>
+    <div class="ticker-item">Operational Audit<div class="ticker-dot"></div></div>
+    <div class="ticker-item">SOP Development<div class="ticker-dot"></div></div>
+  </div>
+</div>
+
+<!-- ════════════════ ABOUT ════════════════ -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-img-wrap reveal">
+        <div class="about-img-frame"></div>
+        <img class="about-img"
+          src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=80"
+          alt="Premium Restaurant Interior"
+          loading="lazy">
+        <div class="about-badge">
+          <div class="about-badge-num">15+</div>
+          <div class="about-badge-text">Years of Expertise</div>
+        </div>
+      </div>
+      <div class="about-body">
+        <div class="section-label reveal">About Us</div>
+        <h2 class="section-title reveal reveal-delay-1">
+          India's Most <em>Trusted</em><br>Hospitality Consultants
+        </h2>
+        <div class="gold-line reveal reveal-delay-2"></div>
+        <p class="reveal reveal-delay-2">
+          Élite Hospitality Consultants is a premier advisory firm specializing in the complete setup and transformation of hospitality businesses across India. We partner with entrepreneurs, investors, and established operators to build profitable, guest-centric businesses.
+        </p>
+        <p class="reveal reveal-delay-3">
+          From ideation and concept design through kitchen planning, menu engineering, staff hiring, and grand opening — we are your dedicated partner at every step. Our pan-India presence spans 18 states with over 200 successful projects.
+        </p>
+        <div class="about-features reveal reveal-delay-3">
+          <div class="about-feature">
+            <svg class="about-feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span class="about-feature-text">End-to-end setup consulting</span>
+          </div>
+          <div class="about-feature">
+            <svg class="about-feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span class="about-feature-text">Pan-India presence & network</span>
+          </div>
+          <div class="about-feature">
+            <svg class="about-feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span class="about-feature-text">Profit-first methodology</span>
+          </div>
+          <div class="about-feature">
+            <svg class="about-feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span class="about-feature-text">Customized business solutions</span>
+          </div>
+        </div>
+        <div class="reveal reveal-delay-4">
+          <a href="#contact" class="btn-primary"><span>Start Your Project</span><span>→</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════ SERVICES ════════════════ -->
+<section id="services">
+  <div class="container">
+    <div class="services-header reveal">
+      <div class="section-label">What We Do</div>
+      <h2 class="section-title">Our <em>Expertise</em><br>& Services</h2>
+      <div class="gold-line"></div>
+      <p>Comprehensive hospitality consulting services tailored to launch and grow every type of food & beverage and accommodation business.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <span class="service-num">01</span>
+        <div class="service-icon-wrap"><span class="service-icon">🏨</span></div>
+        <h3 class="service-title">Hotel Setup Consulting</h3>
+        <p class="service-desc">Full-cycle hotel launch support: concept, licensing, layout design, brand positioning, pre-opening staff hiring, and operational systems.</p>
+        <a href="#contact" class="service-arrow">Learn More →</a>
+      </div>
+      <div class="service-card reveal reveal-delay-1">
+        <span class="service-num">02</span>
+        <div class="service-icon-wrap"><span class="service-icon">🍽️</span></div>
+        <h3 class="service-title">Restaurant Setup</h3>
+        <p class="service-desc">Turn-key restaurant launch from floor plan to final plating. We handle concept, design inputs, kitchen planning, menu, and grand opening.</p>
+        <a href="#contact" class="service-arrow">Learn More →</a>
+      </div>
+      <div class="service-card reveal reveal-delay-2">
+        <span class="service-num">03</span>
+        <div class="service-icon-wrap"><span class="service-icon">☕</span></div>
+        <h3 class="service-title">Café & Bakery Consulting</h3>
+        <p class="service-desc">Specialty café and artisan bakery setup consulting — from bean-to-cup menu development to equipment selection and barista training.</p>
+        <a href="#contact" class="service-arrow">Learn More →</a>
+      </div>
+      <div class="service-card reveal">
+        <span class="service-num">04</span>
+        <div class="service-icon-wrap"><span class="service-icon">📦</span></div>
+        <h3 class="service-title">Cloud Kitchen Setup</h3>
+        <p class="service-desc">Launch profitable delivery-first dark kitchens with optimal multi-brand strategies, aggregator onboarding, and packaging systems.</p>
+        <a href="#contact" class="service-arrow">Learn More →</a>
+      </div>
+      <div class="service-card reveal reveal-delay-1">
+        <span class="service-num">05</span>
+        <div class="service-icon-wrap"><span class="service-icon">📋</span></div>
+        <h3 class="service-title">Menu Engineering</h3>
+        <p class="service-desc">Data-driven menu design and costing that maximizes profit margins, reduces waste, and creates irresistible guest experiences.</p>
+        <a href="#contact" class="service-arrow">Learn More →</a>
+      </div>
+      <div class="service-card reveal reveal-delay-2">
+        <span class="service-num">06</span>
+        <div class="service-icon-wrap"><span class="service-icon">🔧</span></div>
+        <h3 class="service-title">Kitchen Planning & Layout</h3>
+        <p class="service-desc">Ergonomic commercial kitchen design for maximum efficiency, FSSAI compliance, energy optimization, and seamless workflow.</p>
+        <a href="#contact" class="service-arrow">Learn More →</a>
+      </div>
+      <div class="service-card reveal">
+        <span class="service-num">07</span>
+        <div class="service-icon-wrap"><span class="service-icon">👨‍🍳</span></div>
+        <h3 class="service-title">Staff Hiring & Training</h3>
+        <p class="service-desc">Recruit, onboard, and train front-of-house and back-of-house teams. Build a service culture that keeps guests coming back.</p>
+        <a href="#contact" class="service-arrow">Learn More →</a>
+      </div>
+      <div class="service-card reveal reveal-delay-1">
+        <span class="service-num">08</span>
+        <div class="service-icon-wrap"><span class="service-icon">📑</span></div>
+        <h3 class="service-title">SOP Development</h3>
+        <p class="service-desc">Create robust Standard Operating Procedures that ensure consistent quality, reduce errors, and scale your operations seamlessly.</p>
+        <a href="#contact" class="service-arrow">Learn More →</a>
+      </div>
+      <div class="service-card reveal reveal-delay-2">
+        <span class="service-num">09</span>
+        <div class="service-icon-wrap"><span class="service-icon">💰</span></div>
+        <h3 class="service-title">Cost Control & Profit Optimization</h3>
+        <p class="service-desc">Identify revenue leaks, optimize food cost and labor ratios, and implement systems that protect and grow your bottom line.</p>
+        <a href="#contact" class="service-arrow">Learn More →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════ WHY CHOOSE US ════════════════ -->
+<section id="why">
+  <div class="why-bg-text">EXCELLENCE</div>
+  <div class="container">
+    <div class="why-grid">
+      <div>
+        <div class="section-label reveal">Why Choose Us</div>
+        <h2 class="section-title reveal reveal-delay-1">
+          The <em>Difference</em><br>Expertise Makes
+        </h2>
+        <div class="gold-line reveal reveal-delay-2"></div>
+        <div class="why-features reveal reveal-delay-2">
+          <div class="why-feature">
+            <span class="why-feature-icon">🏆</span>
+            <div class="why-feature-title">15+ Years Experience</div>
+            <p class="why-feature-desc">Deep domain expertise across every segment of the hospitality industry.</p>
+          </div>
+          <div class="why-feature">
+            <span class="why-feature-icon">🔄</span>
+            <div class="why-feature-title">End-to-End Support</div>
+            <p class="why-feature-desc">From first concept to full operation — we are with you at every stage.</p>
+          </div>
+          <div class="why-feature">
+            <span class="why-feature-icon">🎯</span>
+            <div class="why-feature-title">Profit-First Strategy</div>
+            <p class="why-feature-desc">Every recommendation is made through the lens of sustainable profitability.</p>
+          </div>
+          <div class="why-feature">
+            <span class="why-feature-icon">⚡</span>
+            <div class="why-feature-title">Customized Solutions</div>
+            <p class="why-feature-desc">No templates. Each engagement is uniquely built for your vision and market.</p>
+          </div>
+        </div>
+      </div>
+      <div class="why-image-wrap reveal reveal-delay-2">
+        <img class="why-image"
+          src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&q=80"
+          alt="Restaurant Kitchen"
+          loading="lazy">
+        <div class="why-quote">
+          <p class="why-quote-text">"We don't just consult — we build businesses that thrive for generations."</p>
+          <p class="why-quote-author">— Founder & Chief Consultant</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════ STATS ════════════════ -->
+<section id="stats">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-item reveal">
+        <div class="stat-num"><span class="count-up" data-target="15">0</span><span class="stat-suffix">+</span></div>
+        <div class="stat-label">Years Experience</div>
+      </div>
+      <div class="stat-item reveal reveal-delay-1">
+        <div class="stat-num"><span class="count-up" data-target="80">0</span><span class="stat-suffix">+</span></div>
+        <div class="stat-label">Hotels Setup</div>
+      </div>
+      <div class="stat-item reveal reveal-delay-2">
+        <div class="stat-num"><span class="count-up" data-target="150">0</span><span class="stat-suffix">+</span></div>
+        <div class="stat-label">Restaurants Launched</div>
+      </div>
+      <div class="stat-item reveal reveal-delay-3">
+        <div class="stat-num"><span class="count-up" data-target="2500">0</span><span class="stat-suffix">+</span></div>
+        <div class="stat-label">Staff Trained</div>
+      </div>
+      <div class="stat-item reveal reveal-delay-4">
+        <div class="stat-num"><span class="count-up" data-target="200">0</span><span class="stat-suffix">+</span></div>
+        <div class="stat-label">Happy Clients</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════ PORTFOLIO ════════════════ -->
+<section id="portfolio">
+  <div class="container">
+    <div class="portfolio-header">
+      <div>
+        <div class="section-label reveal">Our Work</div>
+        <h2 class="section-title reveal reveal-delay-1">Featured <em>Projects</em></h2>
+      </div>
+      <a href="#contact" class="btn-outline reveal reveal-delay-2">View All Projects →</a>
+    </div>
+    <div class="portfolio-grid reveal">
+      <div class="portfolio-item">
+        <img src="https://images.unsplash.com/photo-1544148103-0773bf10d330?w=900&q=80" alt="The Maharaja Palace Hotel" loading="lazy">
+        <div class="portfolio-overlay">
+          <div class="portfolio-info">
+            <div class="portfolio-tag">Hotel Setup • Udaipur</div>
+            <div class="portfolio-name">The Maharaja Palace Hotel</div>
+          </div>
+        </div>
+      </div>
+      <div class="portfolio-item">
+        <img src="https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?w=700&q=80" alt="Spice Route Restaurant" loading="lazy">
+        <div class="portfolio-overlay">
+          <div class="portfolio-info">
+            <div class="portfolio-tag">Restaurant Setup • Delhi</div>
+            <div class="portfolio-name">Spice Route Restaurant</div>
+          </div>
+        </div>
+      </div>
+      <div class="portfolio-item">
+        <img src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?w=700&q=80" alt="Artisan Roast Café" loading="lazy">
+        <div class="portfolio-overlay">
+          <div class="portfolio-info">
+            <div class="portfolio-tag">Café Consulting • Bengaluru</div>
+            <div class="portfolio-name">Artisan Roast Café</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════ TESTIMONIALS ════════════════ -->
+<section id="testimonials">
+  <div class="container">
+    <div class="testimonials-header reveal">
+      <div class="section-label">Client Stories</div>
+      <h2 class="section-title">Words from <em>Our Clients</em></h2>
+      <div class="gold-line"></div>
+    </div>
+    <div class="testimonials-track">
+      <div class="testimonial-card reveal">
+        <div class="testimonial-quote-icon">"</div>
+        <div class="testimonial-stars">
+          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+        </div>
+        <p class="testimonial-text">Working with Élite Hospitality was the best investment we made. They helped us set up our boutique hotel from scratch — licensing, kitchen, SOPs, staff training, everything. We opened on time and hit profitability in Month 4.</p>
+        <div class="testimonial-author">
+          <img class="author-avatar" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80" alt="Rahul Sharma" loading="lazy">
+          <div class="author-info">
+            <div class="author-name">Rahul Sharma</div>
+            <div class="author-role">Owner, The Hill View Retreat, Shimla</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card reveal reveal-delay-1">
+        <div class="testimonial-quote-icon">"</div>
+        <div class="testimonial-stars">
+          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+        </div>
+        <p class="testimonial-text">They redesigned our entire menu and kitchen workflow. Our food cost dropped from 38% to 27% in two months. The operational audit they did was eye-opening — I didn't know how much money we were losing daily.</p>
+        <div class="testimonial-author">
+          <img class="author-avatar" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&q=80" alt="Priya Menon" loading="lazy">
+          <div class="author-info">
+            <div class="author-name">Priya Menon</div>
+            <div class="author-role">Director, Coastal Bites, Chennai</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card reveal reveal-delay-2">
+        <div class="testimonial-quote-icon">"</div>
+        <div class="testimonial-stars">
+          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+        </div>
+        <p class="testimonial-text">We launched a cloud kitchen brand with their guidance. Six months in, we're running three brands out of one kitchen and doing ₹8L+ monthly revenue. The aggregator strategy they built for us is running like clockwork.</p>
+        <div class="testimonial-author">
+          <img class="author-avatar" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&q=80" alt="Aakash Verma" loading="lazy">
+          <div class="author-info">
+            <div class="author-name">Aakash Verma</div>
+            <div class="author-role">Founder, QuickBite Cloud Kitchens, Pune</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════ FOUNDER ════════════════ -->
+<section id="founder">
+  <div class="container">
+    <div class="founder-grid">
+      <div class="founder-img-wrap reveal">
+        <div class="founder-accent"></div>
+        <img class="founder-img"
+          src="https://images.unsplash.com/photo-1583394293214-0b3c1ec7e0de?w=600&q=80"
+          alt="Head Chef & Founder"
+          loading="lazy">
+        <div class="founder-credentials">
+          <div class="credential-item">
+            <div class="credential-dot"></div>
+            <div class="credential-text">IHM Certified, 5-Star background</div>
+          </div>
+          <div class="credential-item">
+            <div class="credential-dot"></div>
+            <div class="credential-text">200+ Projects across India</div>
+          </div>
+          <div class="credential-item">
+            <div class="credential-dot"></div>
+            <div class="credential-text">Food Safety & FSSAI Expert</div>
+          </div>
+          <div class="credential-item">
+            <div class="credential-dot"></div>
+            <div class="credential-text">Featured in FoodService India</div>
+          </div>
+        </div>
+      </div>
+      <div class="founder-body">
+        <div class="section-label reveal">Meet the Expert</div>
+        <div class="founder-name reveal reveal-delay-1">Chef Arjun Mehta</div>
+        <div class="founder-title-tag reveal reveal-delay-1">Founder & Chief Hospitality Consultant</div>
+        <div class="founder-divider reveal reveal-delay-2"></div>
+        <p class="reveal reveal-delay-2">
+          With over 15 years in the trenches of Indian hospitality — from 5-star kitchens in Mumbai to resort launches in Himachal Pradesh — Chef Arjun Mehta founded Élite Hospitality Consultants with a singular mission: to help every serious hospitality entrepreneur build a business that lasts.
+        </p>
+        <p class="reveal reveal-delay-3">
+          Having personally opened, operated, and rescued 200+ hospitality businesses across India, Arjun brings a rare combination of culinary excellence, financial acumen, and operational mastery that no textbook consultant can replicate.
+        </p>
+        <p class="reveal reveal-delay-3">
+          Whether you're opening your first café or scaling to a hotel chain, Arjun and the Élite team become your embedded business partners — rolling up sleeves alongside you to make your vision a profitable reality.
+        </p>
+        <div class="reveal reveal-delay-4">
+          <a href="#contact" class="btn-primary"><span>Schedule a Call with Arjun</span><span>→</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════ BLOG ════════════════ -->
+<section id="blog">
+  <div class="container">
+    <div style="display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:1.5rem;">
+      <div>
+        <div class="section-label reveal">Insights</div>
+        <h2 class="section-title reveal reveal-delay-1">From Our <em>Blog</em></h2>
+      </div>
+      <a href="#" class="btn-outline reveal reveal-delay-2">All Articles →</a>
+    </div>
+    <div class="blog-grid">
+      <div class="blog-card reveal">
+        <div class="blog-thumb-wrap">
+          <img class="blog-thumb" src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&q=80" alt="Blog 1" loading="lazy">
+        </div>
+        <div class="blog-content">
+          <div class="blog-tag">Restaurant Setup</div>
+          <h3 class="blog-title">How to Open a Restaurant in India: The Complete 2025 Checklist</h3>
+          <p class="blog-excerpt">From FSSAI licensing to kitchen layout and staff hiring — here's everything you need before your first table is set.</p>
+          <div class="blog-meta">
+            <span class="blog-date">May 15, 2025</span>
+            <a href="#" class="blog-read-more">Read →</a>
+          </div>
+        </div>
+      </div>
+      <div class="blog-card reveal reveal-delay-1">
+        <div class="blog-thumb-wrap">
+          <img class="blog-thumb" src="https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?w=600&q=80" alt="Blog 2" loading="lazy">
+        </div>
+        <div class="blog-content">
+          <div class="blog-tag">Profit Optimization</div>
+          <h3 class="blog-title">Why Your Food Cost Is Killing Your Restaurant (And How to Fix It)</h3>
+          <p class="blog-excerpt">Most restaurants run at 35-45% food cost. We'll show you how to get below 30% without compromising on quality.</p>
+          <div class="blog-meta">
+            <span class="blog-date">Apr 28, 2025</span>
+            <a href="#" class="blog-read-more">Read →</a>
+          </div>
+        </div>
+      </div>
+      <div class="blog-card reveal reveal-delay-2">
+        <div class="blog-thumb-wrap">
+          <img class="blog-thumb" src="https://images.unsplash.com/photo-1559329007-40df8a9345d8?w=600&q=80" alt="Blog 3" loading="lazy">
+        </div>
+        <div class="blog-content">
+          <div class="blog-tag">Cloud Kitchen</div>
+          <h3 class="blog-title">The Cloud Kitchen Model: Is It Still Profitable in 2025?</h3>
+          <p class="blog-excerpt">Delivery-only kitchens are booming but margins are tight. Here's how to structure a multi-brand cloud kitchen that actually works.</p>
+          <div class="blog-meta">
+            <span class="blog-date">Apr 10, 2025</span>
+            <a href="#" class="blog-read-more">Read →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════ CONTACT ════════════════ -->
+<section id="contact">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="section-label reveal">Get In Touch</div>
+        <h2 class="section-title reveal reveal-delay-1">
+          Let's Build<br>Something <em>Remarkable</em>
+        </h2>
+        <div class="gold-line reveal reveal-delay-2"></div>
+        <p class="reveal reveal-delay-2">
+          Ready to launch your hospitality business or transform an existing one? Fill in the form or reach out directly. We typically respond within 24 hours.
+        </p>
+        <div class="contact-items reveal reveal-delay-3">
+          <div class="contact-item">
+            <div class="contact-item-icon">📞</div>
+            <div class="contact-item-text">
+              <div class="contact-item-label">Phone</div>
+              <div class="contact-item-value">+91 98765 43210</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">✉️</div>
+            <div class="contact-item-text">
+              <div class="contact-item-label">Email</div>
+              <div class="contact-item-value">hello@elitehospitality.in</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">📍</div>
+            <div class="contact-item-text">
+              <div class="contact-item-label">Head Office</div>
+              <div class="contact-item-value">Sector 17, Chandigarh, Punjab 160017</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">💬</div>
+            <div class="contact-item-text">
+              <div class="contact-item-label">WhatsApp</div>
+              <div class="contact-item-value">+91 98765 43210</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form reveal reveal-delay-2">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="fname">Full Name *</label>
+            <input type="text" id="fname" placeholder="Your full name">
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone Number *</label>
+            <input type="tel" id="phone" placeholder="+91 XXXXX XXXXX">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" placeholder="you@example.com">
+          </div>
+          <div class="form-group">
+            <label for="city">City / State</label>
+            <input type="text" id="city" placeholder="Where are you located?">
+          </div>
+        </div>
+        <div class="form-group form-full">
+          <label for="service">Service Required</label>
+          <select id="service">
+            <option value="">Select a service...</option>
+            <option>Hotel Setup Consulting</option>
+            <option>Restaurant Setup</option>
+            <option>Café & Bakery Consulting</option>
+            <option>Cloud Kitchen Setup</option>
+            <option>Menu Engineering</option>
+            <option>Kitchen Planning & Layout</option>
+            <option>Staff Hiring & Training</option>
+            <option>SOP Development</option>
+            <option>Operational Audit</option>
+            <option>Cost Control & Profit Optimization</option>
+          </select>
+        </div>
+        <div class="form-group form-full">
+          <label for="message">Tell Us About Your Project</label>
+          <textarea id="message" placeholder="Describe your hospitality project, current challenges, or goals..."></textarea>
+        </div>
+        <div class="form-submit">
+          <button type="submit" class="btn-primary" onclick="handleSubmit(event)"><span>Send Inquiry</span><span>→</span></button>
+          <span class="form-note">or</span>
+          <a href="https://wa.me/919876543210" class="whatsapp-btn" target="_blank">
+            <svg class="whatsapp-icon" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+            WhatsApp
+          </a>
+        </div>
+        <div id="formSuccess" style="display:none; margin-top:1rem; padding:1rem 1.5rem; background:rgba(37,211,102,0.1); border:1px solid rgba(37,211,102,0.3); color:#25D366; font-size:0.82rem; font-weight:500;">
+          ✓ Thank you! We'll be in touch within 24 hours.
+        </div>
+      </div>
+    </div>
+    <div class="map-wrap reveal">
+      <div class="map-overlay">
+        <div class="map-icon">📍</div>
+        <div class="map-text">Sector 17, Chandigarh — Head Office</div>
+        <a href="https://maps.google.com" target="_blank" class="map-btn">Open in Google Maps →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════ FOOTER ════════════════ -->
+<footer>
+  <div class="footer-main">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a href="#" class="nav-logo" style="display:inline-flex; margin-bottom:0.2rem;">
+            <span class="nav-logo-text" style="font-size:1.4rem;">Élite Hospitality</span>
+            <span class="nav-logo-sub" style="margin-top:0.15rem;">Consultants</span>
+          </a>
+          <p class="footer-brand-desc">
+            India's trusted partner for hotel and restaurant consulting. We turn hospitality dreams into profitable businesses.
+          </p>
+          <div class="footer-social">
+            <a href="#" class="social-btn" aria-label="Instagram">IG</a>
+            <a href="#" class="social-btn" aria-label="LinkedIn">LI</a>
+            <a href="#" class="social-btn" aria-label="Facebook">FB</a>
+            <a href="#" class="social-btn" aria-label="YouTube">YT</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer-col-title">Services</div>
+          <ul class="footer-links">
+            <li><a href="#services">Hotel Setup</a></li>
+            <li><a href="#services">Restaurant Setup</a></li>
+            <li><a href="#services">Café & Bakery</a></li>
+            <li><a href="#services">Cloud Kitchen</a></li>
+            <li><a href="#services">Menu Engineering</a></li>
+            <li><a href="#services">Staff Training</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-col-title">Company</div>
+          <ul class="footer-links">
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="#testimonials">Testimonials</a></li>
+            <li><a href="#founder">Our Expert</a></li>
+            <li><a href="#blog">Blog</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-col-title">Contact</div>
+          <ul class="footer-links" style="gap:1.2rem;">
+            <li style="display:block; color:var(--text-muted); font-size:0.8rem; font-weight:300;">+91 98765 43210</li>
+            <li style="display:block; color:var(--text-muted); font-size:0.8rem; font-weight:300;">hello@elitehospitality.in</li>
+            <li style="display:block; color:var(--text-muted); font-size:0.8rem; font-weight:300; line-height:1.6;">Sector 17, Chandigarh,<br>Punjab 160017, India</li>
+          </ul>
+          <div style="margin-top:2rem;">
+            <a href="#contact" class="btn-primary" style="font-size:0.65rem; padding:0.8rem 1.5rem;"><span>Book Consultation</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2025 Élite Hospitality Consultants. All rights reserved.</div>
+      <div class="footer-bottom-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Sitemap</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Floating WhatsApp -->
+<a href="https://wa.me/919876543210" class="float-wa" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+</a>
+
+<script>
+// ════════ CURSOR ════════
+const cursor = document.getElementById('cursor');
+const ring = document.getElementById('cursorRing');
+let mx = 0, my = 0, rx = 0, ry = 0;
+
+document.addEventListener('mousemove', e => {
+  mx = e.clientX; my = e.clientY;
+  cursor.style.left = mx + 'px';
+  cursor.style.top = my + 'px';
+});
+
+function animateRing() {
+  rx += (mx - rx) * 0.15;
+  ry += (my - ry) * 0.15;
+  ring.style.left = rx + 'px';
+  ring.style.top = ry + 'px';
+  requestAnimationFrame(animateRing);
+}
+animateRing();
+
+document.querySelectorAll('a, button, .service-card, .testimonial-card').forEach(el => {
+  el.addEventListener('mouseenter', () => {
+    cursor.style.transform = 'translate(-50%,-50%) scale(1.8)';
+    ring.style.width = '50px'; ring.style.height = '50px';
+  });
+  el.addEventListener('mouseleave', () => {
+    cursor.style.transform = 'translate(-50%,-50%) scale(1)';
+    ring.style.width = '36px'; ring.style.height = '36px';
+  });
+});
+
+// ════════ NAVBAR ════════
+window.addEventListener('scroll', () => {
+  document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 60);
+});
+
+// ════════ MOBILE NAV ════════
+function toggleMobileNav() {
+  document.getElementById('mobileNav').classList.toggle('open');
+}
+function closeMobileNav() {
+  document.getElementById('mobileNav').classList.remove('open');
+}
+
+// ════════ SCROLL REVEAL ════════
+const revealEls = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('revealed'); observer.unobserve(e.target); }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+revealEls.forEach(el => observer.observe(el));
+
+// ════════ COUNT UP ════════
+const countEls = document.querySelectorAll('.count-up');
+const countObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const el = entry.target;
+      const target = parseInt(el.dataset.target);
+      const duration = 1800;
+      const step = target / (duration / 16);
+      let current = 0;
+      const timer = setInterval(() => {
+        current += step;
+        if (current >= target) { current = target; clearInterval(timer); }
+        el.textContent = Math.floor(current).toLocaleString('en-IN');
+      }, 16);
+      countObserver.unobserve(el);
+    }
+  });
+}, { threshold: 0.5 });
+countEls.forEach(el => countObserver.observe(el));
+
+// ════════ FORM SUBMIT ════════
+function handleSubmit(e) {
+  e.preventDefault();
+  document.getElementById('formSuccess').style.display = 'block';
+  setTimeout(() => { document.getElementById('formSuccess').style.display = 'none'; }, 5000);
+}
+</script>
+</body>
+</html>

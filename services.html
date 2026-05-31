@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Services | Élite Hospitality Consultants</title>
+  <meta name="description" content="Explore our hospitality consulting solutions: hotel and restaurant launch, cloud kitchen setup, SOP building, and menu engineering.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Custom Cursor -->
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <!-- Mobile Nav -->
+  <div class="mobile-nav" id="mobileNav">
+    <a href="about.html" onclick="closeMobileNav()">About</a>
+    <a href="services.html" onclick="closeMobileNav()">Services</a>
+    <a href="gallery.html" onclick="closeMobileNav()">Gallery</a>
+    <a href="owner.html" onclick="closeMobileNav()">Founder</a>
+    <a href="blog-listing.html" onclick="closeMobileNav()">Blog</a>
+    <a href="contact.html" onclick="closeMobileNav()">Contact</a>
+  </div>
+
+  <!-- ════════════════ NAVBAR ════════════════ -->
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <a href="index.html" class="nav-logo">
+        <span class="nav-logo-text">Élite Hospitality</span>
+        <span class="nav-logo-sub">Consultants</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html" style="color: var(--gold);">Services</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="owner.html">Founder</a></li>
+        <li><a href="blog-listing.html">Blog</a></li>
+        <li><a href="contact.html" class="nav-cta">Book Consultation</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" onclick="toggleMobileNav()" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ════════════════ SUBPAGE HERO ════════════════ -->
+  <section class="subpage-hero">
+    <div class="container">
+      <div class="breadcrumbs">
+        <a href="index.html">Home</a>
+        <span>/</span>
+        <span>Services</span>
+      </div>
+      <h1 class="section-title">Consulting <em>Services</em></h1>
+    </div>
+  </section>
+
+  <!-- ════════════════ SERVICES DETAIL ════════════════ -->
+  <section style="background: var(--black); padding: 6rem 0;">
+    <div class="container">
+      <div class="services-grid" style="grid-template-columns: 1fr 1fr; background: transparent; gap: 3rem;">
+        
+        <!-- Service 1 -->
+        <div class="service-card reveal" style="background: var(--dark2); border: 1px solid rgba(200,169,110,0.1); padding: 3rem;">
+          <span class="service-num" style="top:2rem; right:2rem;">01</span>
+          <div class="service-icon-wrap"><span class="service-icon">🏨</span></div>
+          <h3 class="service-title" style="font-size: 1.6rem; margin-bottom: 1rem;">Hotel Setup Consulting</h3>
+          <p class="service-desc" style="font-size:0.88rem; margin-bottom: 1.5rem;">
+            Whether launching a boutique resort in Shimla or a business hotel in Gurugram, we provide end-to-end consulting covering:
+          </p>
+          <ul style="list-style:none; display:flex; flex-direction:column; gap:0.6rem; color:var(--text-muted); font-size:0.82rem; font-family:var(--font-body); font-weight:300;">
+            <li>✓ Market demand feasibility study & brand strategy</li>
+            <li>✓ Space layout validation and architect brief coordination</li>
+            <li>✓ Hospitality licensing support (FSSAI, Fire, Excise, Trade)</li>
+            <li>✓ Complete operational and pre-opening management setup</li>
+          </ul>
+          <a href="contact.html" class="btn-primary" style="margin-top: 2rem; font-size:0.65rem; padding:0.8rem 1.6rem;"><span>Book Service</span></a>
+        </div>
+
+        <!-- Service 2 -->
+        <div class="service-card reveal reveal-delay-1" style="background: var(--dark2); border: 1px solid rgba(200,169,110,0.1); padding: 3rem;">
+          <span class="service-num" style="top:2rem; right:2rem;">02</span>
+          <div class="service-icon-wrap"><span class="service-icon">🍽️</span></div>
+          <h3 class="service-title" style="font-size: 1.6rem; margin-bottom: 1rem;">Restaurant Setup</h3>
+          <p class="service-desc" style="font-size:0.88rem; margin-bottom: 1.5rem;">
+            Launch dining setups that merge culinary creativity with high commercial output. Our key components:
+          </p>
+          <ul style="list-style:none; display:flex; flex-direction:column; gap:0.6rem; color:var(--text-muted); font-size:0.82rem; font-family:var(--font-body); font-weight:300;">
+            <li>✓ Theme concept building & layout engineering</li>
+            <li>✓ Equipment planning, vendor quotes comparison, procurement</li>
+            <li>✓ Core menu composition, recipe standardization, plating designs</li>
+            <li>✓ Launch scheduling, marketing checklist, dry-run oversight</li>
+          </ul>
+          <a href="contact.html" class="btn-primary" style="margin-top: 2rem; font-size:0.65rem; padding:0.8rem 1.6rem;"><span>Book Service</span></a>
+        </div>
+
+        <!-- Service 3 -->
+        <div class="service-card reveal" style="background: var(--dark2); border: 1px solid rgba(200,169,110,0.1); padding: 3rem;">
+          <span class="service-num" style="top:2rem; right:2rem;">03</span>
+          <div class="service-icon-wrap"><span class="service-icon">☕</span></div>
+          <h3 class="service-title" style="font-size: 1.6rem; margin-bottom: 1rem;">Café & Bakery Consulting</h3>
+          <p class="service-desc" style="font-size:0.88rem; margin-bottom: 1.5rem;">
+            Build high-margin specialty coffee setups and bakeries. Includes:
+          </p>
+          <ul style="list-style:none; display:flex; flex-direction:column; gap:0.6rem; color:var(--text-muted); font-size:0.82rem; font-family:var(--font-body); font-weight:300;">
+            <li>✓ Bean selection, coffee profiles, custom barista setups</li>
+            <li>✓ Dessert menu design, shelf-life verification, display strategy</li>
+            <li>✓ Bakery layout with specialized ovens, proofers, dough mixers</li>
+            <li>✓ Barista and pastry chef workflow optimization</li>
+          </ul>
+          <a href="contact.html" class="btn-primary" style="margin-top: 2rem; font-size:0.65rem; padding:0.8rem 1.6rem;"><span>Book Service</span></a>
+        </div>
+
+        <!-- Service 4 -->
+        <div class="service-card reveal reveal-delay-1" style="background: var(--dark2); border: 1px solid rgba(200,169,110,0.1); padding: 3rem;">
+          <span class="service-num" style="top:2rem; right:2rem;">04</span>
+          <div class="service-icon-wrap"><span class="service-icon">📦</span></div>
+          <h3 class="service-title" style="font-size: 1.6rem; margin-bottom: 1rem;">Cloud Kitchen Setup</h3>
+          <p class="service-desc" style="font-size:0.88rem; margin-bottom: 1.5rem;">
+            Maximize space output with multi-brand delivery setups. Includes:
+          </p>
+          <ul style="list-style:none; display:flex; flex-direction:column; gap:0.6rem; color:var(--text-muted); font-size:0.82rem; font-family:var(--font-body); font-weight:300;">
+            <li>✓ Multi-brand concept layout inside a single kitchen footprint</li>
+            <li>✓ Aggregator listing optimization & online packaging branding</li>
+            <li>✓ Smart prep schedules to minimize order time</li>
+            <li>✓ Menu design built to survive delivery transit</li>
+          </ul>
+          <a href="contact.html" class="btn-primary" style="margin-top: 2rem; font-size:0.65rem; padding:0.8rem 1.6rem;"><span>Book Service</span></a>
+        </div>
+
+        <!-- Service 5 -->
+        <div class="service-card reveal" style="background: var(--dark2); border: 1px solid rgba(200,169,110,0.1); padding: 3rem;">
+          <span class="service-num" style="top:2rem; right:2rem;">05</span>
+          <div class="service-icon-wrap"><span class="service-icon">📋</span></div>
+          <h3 class="service-title" style="font-size: 1.6rem; margin-bottom: 1rem;">Menu Engineering</h3>
+          <p class="service-desc" style="font-size:0.88rem; margin-bottom: 1.5rem;">
+            A scientific method to menu building, focusing on raw-ingredient overlaps and gross profits:
+          </p>
+          <ul style="list-style:none; display:flex; flex-direction:column; gap:0.6rem; color:var(--text-muted); font-size:0.82rem; font-family:var(--font-body); font-weight:300;">
+            <li>✓ Recipe-by-recipe cost auditing and waste prevention</li>
+            <li>✓ Menu structure design (highlighting cash-cow items)</li>
+            <li>✓ Regular ingredient cost review tools</li>
+            <li>✓ Portion-control templates for kitchen teams</li>
+          </ul>
+          <a href="contact.html" class="btn-primary" style="margin-top: 2rem; font-size:0.65rem; padding:0.8rem 1.6rem;"><span>Book Service</span></a>
+        </div>
+
+        <!-- Service 6 -->
+        <div class="service-card reveal reveal-delay-1" style="background: var(--dark2); border: 1px solid rgba(200,169,110,0.1); padding: 3rem;">
+          <span class="service-num" style="top:2rem; right:2rem;">06</span>
+          <div class="service-icon-wrap"><span class="service-icon">🔧</span></div>
+          <h3 class="service-title" style="font-size: 1.6rem; margin-bottom: 1rem;">Kitchen Planning & Layout</h3>
+          <p class="service-desc" style="font-size:0.88rem; margin-bottom: 1.5rem;">
+            Ergonomic design drafting that meets international kitchen workflow safety codes:
+          </p>
+          <ul style="list-style:none; display:flex; flex-direction:column; gap:0.6rem; color:var(--text-muted); font-size:0.82rem; font-family:var(--font-body); font-weight:300;">
+            <li>✓ Kitchen zone planning (Prep, Hot Cooking, Dishwashing, Cold room)</li>
+            <li>✓ Exhaust hood, ventilation, grease traps MEP alignment sheets</li>
+            <li>✓ Equipment technical specifications listing</li>
+            <li>✓ FSSAI and municipality audit safety compliance layout checks</li>
+          </ul>
+          <a href="contact.html" class="btn-primary" style="margin-top: 2rem; font-size:0.65rem; padding:0.8rem 1.6rem;"><span>Book Service</span></a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════ FOOTER ════════════════ -->
+  <footer>
+    <div class="footer-main">
+      <div class="container">
+        <div class="footer-grid">
+          <div>
+            <a href="index.html" class="nav-logo" style="display:inline-flex; margin-bottom:0.2rem;">
+              <span class="nav-logo-text" style="font-size:1.4rem;">Élite Hospitality</span>
+              <span class="nav-logo-sub" style="margin-top:0.15rem;">Consultants</span>
+            </a>
+            <p class="footer-brand-desc">
+              India's trusted partner for hotel and restaurant consulting. We turn hospitality dreams into profitable businesses.
+            </p>
+            <div class="footer-social">
+              <a href="#" class="social-btn" aria-label="Instagram">IG</a>
+              <a href="#" class="social-btn" aria-label="LinkedIn">LI</a>
+              <a href="#" class="social-btn" aria-label="Facebook">FB</a>
+              <a href="#" class="social-btn" aria-label="YouTube">YT</a>
+            </div>
+          </div>
+          <div>
+            <div class="footer-col-title">Services</div>
+            <ul class="footer-links">
+              <li><a href="services.html">Hotel Setup</a></li>
+              <li><a href="services.html">Restaurant Setup</a></li>
+              <li><a href="services.html">Café & Bakery</a></li>
+              <li><a href="services.html">Cloud Kitchen</a></li>
+              <li><a href="services.html">Menu Engineering</a></li>
+              <li><a href="services.html">Staff Training</a></li>
+            </ul>
+          </div>
+          <div>
+            <div class="footer-col-title">Company</div>
+            <ul class="footer-links">
+              <li><a href="about.html">About Us</a></li>
+              <li><a href="gallery.html">Portfolio</a></li>
+              <li><a href="index.html#testimonials">Testimonials</a></li>
+              <li><a href="owner.html">Our Expert</a></li>
+              <li><a href="blog-listing.html">Blog</a></li>
+              <li><a href="contact.html">Contact</a></li>
+            </ul>
+          </div>
+          <div>
+            <div class="footer-col-title">Contact</div>
+            <ul class="footer-links" style="gap:1.2rem;">
+              <li style="display:block; color:var(--text-muted); font-size:0.8rem; font-weight:300;">+91 98765 43210</li>
+              <li style="display:block; color:var(--text-muted); font-size:0.8rem; font-weight:300;">hello@elitehospitality.in</li>
+              <li style="display:block; color:var(--text-muted); font-size:0.8rem; font-weight:300; line-height:1.6;">Sector 17, Chandigarh,<br>Punjab 160017, India</li>
+            </ul>
+            <div style="margin-top:2rem;">
+              <a href="contact.html" class="btn-primary" style="font-size:0.65rem; padding:0.8rem 1.5rem;"><span>Book Consultation</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="footer-bottom">
+        <div class="footer-copy">© 2025 Élite Hospitality Consultants. All rights reserved.</div>
+        <div class="footer-bottom-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Sitemap</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp -->
+  <a href="https://wa.me/919876543210" class="float-wa" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+  </a>
+
+  <script src="js/script.js" defer></script>
+</body>
+</html>
