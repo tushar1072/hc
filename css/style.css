@@ -19,7 +19,10 @@
 
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
 
 body {
   font-family: var(--font-body);
@@ -1571,6 +1574,8 @@ footer {
   .portfolio-item:nth-child(3) { grid-column: span 1; }
   .blog-grid { grid-template-columns: 1fr; }
   .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .footer-bottom { justify-content: center; text-align: center; flex-direction: column; gap: 1.5rem; }
+  .footer-bottom-links { justify-content: center; flex-wrap: wrap; gap: 1.5rem; }
   .form-row { grid-template-columns: 1fr; }
   .stats-grid { grid-template-columns: 1fr 1fr; }
   .why-features { grid-template-columns: 1fr; }
