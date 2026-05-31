@@ -1581,7 +1581,7 @@ footer {
   .service-detail-card { padding: 2rem; }
   .service-detail-card .service-num { top: 1.5rem; right: 1.5rem; }
   .float-wa {
-    bottom: calc(1.5rem + env(safe-area-inset-bottom));
+    bottom: calc(5rem + env(safe-area-inset-bottom));
     right: 1.5rem;
     width: 48px;
     height: 48px;
