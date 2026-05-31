@@ -1619,6 +1619,20 @@ footer {
   .services-detail-grid { gap: 1.5rem; }
   .service-detail-card { padding: 1.5rem; }
   .service-detail-card .service-num { top: 1.2rem; right: 1.2rem; font-size: 2.2rem; }
+  .form-submit {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.8rem;
+  }
+  .form-submit .btn-primary,
+  .form-submit .whatsapp-btn {
+    width: 100%;
+    justify-content: center;
+  }
+  .form-submit .form-note {
+    text-align: center;
+    margin: 0.2rem 0;
+  }
 }
 
 
